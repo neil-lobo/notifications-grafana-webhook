@@ -60,8 +60,9 @@ app.post("/", async (req, res) => {
     for(const alert of req.body.alerts) {
         if (alert.status === "firing" && alert.labels.alertName !== "DatasourceNoData") {
             notifications.push(createNotification(alert, req.body.message));
+            console.log(new Date().toLocaleDateString());
+            console.log(alert);
         }
-        console.log(alert);
     }
 
     let statuses = await sendNotifications(notifications, req.headers.authorization);
