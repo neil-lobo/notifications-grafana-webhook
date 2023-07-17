@@ -58,7 +58,7 @@ app.post("/", async (req, res) => {
     const notifications = [];
 
     for(const alert of req.body.alerts) {
-        if (alert.status === "firing") {
+        if (alert.status === "firing" && alert.labels.alertName !== "DatasourceNoData") {
             notifications.push(createNotification(alert, req.body.message));
         }
         console.log(alert);
