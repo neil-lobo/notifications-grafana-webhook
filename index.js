@@ -38,7 +38,7 @@ async function sendNotification(notification, auth) {
         });
         return res.status;
     } catch(err) {
-        console.error(new Date().toLocaleDateString(), err);
+        console.error(new Date().toLocaleString(), err);
         return 502;
     }
 }
@@ -60,7 +60,7 @@ app.post("/", async (req, res) => {
     for(const alert of req.body.alerts) {
         if (alert.status === "firing" && alert.labels.alertName !== "DatasourceNoData") {
             notifications.push(createNotification(alert, req.body.message));
-            console.log(new Date().toLocaleDateString());
+            console.log(new Date().toLocaleString());
             console.log(alert);
         }
     }
